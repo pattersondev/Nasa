@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>javascript please fucking work</title>
+    </head>
+    <body id = "body" style = "text-align: center;">
+        <div class = "iotd">
+            <h1>Nasa image of the day</h1>
+        <input id = "iod"type="button" onclick = 'getImage()'value="Click for image">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            //Requests the nasa image of the day and then when the button is clicked the image is shown.
+            let image;
+            const getImage = () => {
+                axios.get('https://api.nasa.gov/planetary/apod?api_key=LxgFJgPJHTFpJIkYPuusEdtzODiGbsuNMqoxJUw5').then(response => {
+                    image = response.data.url;
+                    console.log(image);
+                    var x = document.createElement('IMG');
+                    x.setAttribute('src', image);
+                    document.getElementById('body').appendChild(x);
+                }).catch(error => console.error(error))
+            } 
+        </script>
+        </div>
+    </body>
+</html>
